@@ -1,0 +1,29 @@
+.nav-head{
+    display:  flex;
+    flex-direction: row;
+    padding: 5px;;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(191, 198, 201);
+
+    .nav-link{
+        display: flex;
+        list-style: none;
+        gap: 50px;
+        a{
+            text-decoration: none;
+        }
+    }
+    .search-functionality{
+        display: flex;
+        justify-content: flex-end;
+        input{
+            height: 20px;
+            width: 150px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+    }
+
+}

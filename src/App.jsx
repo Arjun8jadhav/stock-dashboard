@@ -3,10 +3,12 @@ import StockOverview from './component/stockoverview';
 import PriceChart from './component/pricechart';
 import SignalTimeline from './component/signal';
 import { getStockData, getSignalData } from './service/api';
+import './app.scss'
+import { Navbar } from './component/navbar';
 
 function App() {
   const [stock, setStock] = useState(null);
-  const [signals, setSignals] = useState(null); // should be null, not empty array
+  const [signals, setSignals] = useState(null);
   const [flag, setFlag] = useState(true);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ function App() {
       const signalInfo = await getSignalData();
       setStock(stockInfo);
       setSignals(signalInfo);
-      setFlag(false); // ✅ move this after data is set
+      setFlag(false);
     }
     fetchdata();
   }, []);
@@ -23,12 +25,14 @@ function App() {
   if (flag || !stock || !signals) return <div>Loading...</div>;
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>📊 Stock Insight Dashboard</h1>
-      <StockOverview stock={stock} />
-      <PriceChart priceSeries={signals.price_series} />
-      <SignalTimeline signals={signals.signals} />
-    </div>
+    <>
+      <Navbar></Navbar>
+      <div className='dashboard'>
+        <StockOverview stock={stock} />
+        <PriceChart priceSeries={signals.price_series} />
+        <SignalTimeline signals={signals.signals} />
+      </div>
+    </>
   );
 }
 

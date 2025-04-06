@@ -3,7 +3,7 @@ import React from 'react';
 const SignalTimeline = ({ signals }) => {
   return (
     <div>
-      <h3>Trading Signals</h3>
+      <h2>Trading Signals</h2>
       <div style={{ display: 'flex', gap: 10 }}>
         {signals.map((signal, index) => {
           let symbol = '⚪';
